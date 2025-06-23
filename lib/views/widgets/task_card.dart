@@ -139,8 +139,8 @@ class TaskCard extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: isCompleted 
-                            ? Colors.green.withOpacity(0.1)
-                            : Colors.orange.withOpacity(0.1),
+                            ? Colors.green[50]
+                            : Colors.orange[50],
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                           color: isCompleted ? Colors.green : Colors.orange,
