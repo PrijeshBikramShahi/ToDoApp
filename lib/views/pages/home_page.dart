@@ -10,8 +10,6 @@ import '../widgets/task_card.dart';
 import '../widgets/task_stats_card.dart';
 import '../widgets/empty_state_widget.dart';
 
-/// Home page displaying the list of tasks and main navigation
-/// Uses GetX Obx for reactive UI updates
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -23,13 +21,11 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('My Tasks'),
         actions: [
-          // Refresh button
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () => taskController.refresh(),
             tooltip: 'Refresh',
           ),
-          // More options menu
           PopupMenuButton<String>(
             onSelected: _handleMenuSelection,
             itemBuilder: (context) => [
@@ -48,7 +44,6 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Obx(() {
-        // Show loading indicator when fetching data
         if (taskController.isLoading && taskController.tasks.isEmpty) {
           return const Center(
             child: Column(
@@ -75,7 +70,6 @@ class HomePage extends StatelessWidget {
           onRefresh: taskController.refresh,
           child: CustomScrollView(
             slivers: [
-              // Connection status banner
               if (!taskController.isOnline)
                 SliverToBoxAdapter(
                   child: Container(
@@ -95,7 +89,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
 
-              // Task statistics
               if (taskController.tasks.isNotEmpty)
                 SliverToBoxAdapter(
                   child: Padding(
@@ -104,7 +97,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
 
-              // Tasks list or empty state
               taskController.tasks.isEmpty
                   ? const SliverFillRemaining(
                       child: EmptyStateWidget(),
@@ -143,7 +135,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  /// Handles menu item selection
   void _handleMenuSelection(String value) {
     // ignore: unused_local_variable
     final TaskController taskController = Get.find<TaskController>();
@@ -155,7 +146,6 @@ class HomePage extends StatelessWidget {
     }
   }
 
-  /// Shows confirmation dialog for clearing cache
   void _showClearCacheConfirmation() {
     Get.dialog(
       AlertDialog(
@@ -185,7 +175,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  /// Shows confirmation dialog for deleting a task
   void _showDeleteConfirmation(BuildContext context, TaskModel task) {
     Get.dialog(
       AlertDialog(
@@ -209,12 +198,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  /// Navigates to add task page
   void _addTask() {
     Get.toNamed(AppRoutes.addTask);
   }
 
-  /// Navigates to edit task page
   void _editTask(TaskModel task) {
     Get.toNamed(AppRoutes.editTask, arguments: task);
   }
