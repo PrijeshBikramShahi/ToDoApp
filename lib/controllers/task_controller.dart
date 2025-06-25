@@ -6,8 +6,6 @@ import '../models/task_model.dart';
 import '../core/services/api_service.dart';
 import '../core/services/storage_service.dart';
 
-/// Main controller for managing tasks and application state
-/// Uses GetX for reactive state management
 class TaskController extends GetxController {
   final ApiService _apiService;
   final StorageService _storageService;
@@ -60,8 +58,6 @@ class TaskController extends GetxController {
     }
   }
 
-  /// Fetches all tasks from the API
-  /// Handles network errors and offline scenarios
   Future<void> fetchTasks() async {
     try {
       _setLoading(true);
@@ -85,7 +81,6 @@ class TaskController extends GetxController {
   }
 
   /// Creates a new task
-  /// Optimistic update with rollback on failure
   Future<bool> createTask({
     required String title,
     String? description,

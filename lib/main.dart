@@ -10,7 +10,6 @@ import 'views/pages/home_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  // Initialize GetStorage for local caching
   await GetStorage.init();
   
   runApp(MyApp());
