@@ -1,12 +1,9 @@
 import 'package:get_storage/get_storage.dart';
 import '../../models/task_model.dart';
 
-/// Service class for local storage operations
-/// Uses GetStorage to cache tasks locally for offline functionality
 class StorageService {
   late final GetStorage _storage;
-  
-  // Storage keys
+
   static const String _tasksKey = 'cached_tasks';
   static const String _lastSyncKey = 'last_sync_time';
 
@@ -14,8 +11,6 @@ class StorageService {
     _storage = GetStorage();
   }
 
-  /// Saves tasks to local storage
-  /// Converts TaskModel objects to JSON for storage
   Future<void> saveTasks(List<TaskModel> tasks) async {
     try {
       final tasksJson = tasks.map((task) => task.toJson()).toList();
@@ -27,8 +22,6 @@ class StorageService {
     }
   }
 
-  /// Loads tasks from local storage
-  /// Returns cached tasks or empty list if none exist
   List<TaskModel> loadTasks() {
     try {
       final tasksJson = _storage.read(_tasksKey) as List<dynamic>?;
@@ -45,7 +38,6 @@ class StorageService {
     return [];
   }
 
-  /// Gets the last sync time
   DateTime? getLastSyncTime() {
     try {
       final syncTimeString = _storage.read(_lastSyncKey) as String?;
@@ -58,7 +50,6 @@ class StorageService {
     return null;
   }
 
-  /// Clears all cached data
   Future<void> clearCache() async {
     try {
       await _storage.remove(_tasksKey);
@@ -69,7 +60,6 @@ class StorageService {
     }
   }
 
-  /// Checks if there are cached tasks available
   bool hasCachedTasks() {
     return _storage.hasData(_tasksKey);
   }
