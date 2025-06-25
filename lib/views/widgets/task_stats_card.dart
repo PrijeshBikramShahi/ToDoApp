@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/task_controller.dart';
 
-/// Widget displaying task statistics and progress
-/// Shows total, completed, and pending task counts with progress indicator
 class TaskStatsCard extends StatelessWidget {
   final TaskController controller;
 
@@ -23,7 +21,6 @@ class TaskStatsCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header
             Row(
               children: [
                 Icon(
@@ -42,7 +39,6 @@ class TaskStatsCard extends StatelessWidget {
             
             const SizedBox(height: 16),
             
-            // Progress bar
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -77,7 +73,6 @@ class TaskStatsCard extends StatelessWidget {
             
             const SizedBox(height: 16),
             
-            // Statistics row
             Row(
               children: [
                 // Total tasks
@@ -118,7 +113,6 @@ class TaskStatsCard extends StatelessWidget {
   }
 }
 
-/// Individual statistic item widget
 class _StatItem extends StatelessWidget {
   final IconData icon;
   final String label;
