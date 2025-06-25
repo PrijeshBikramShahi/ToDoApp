@@ -13,7 +13,6 @@ class TaskModel {
     this.isDone = false,
   });
 
-  /// Creates a TaskModel from JSON data (from API response)
   factory TaskModel.fromJson(Map<String, dynamic> json) {
     return TaskModel(
       id: json['id'] as int?,
@@ -24,7 +23,6 @@ class TaskModel {
     );
   }
 
-  /// Converts TaskModel to JSON (for API requests)
   Map<String, dynamic> toJson() {
     return {
       if (id != null) 'id': id,
@@ -35,7 +33,6 @@ class TaskModel {
     };
   }
 
-  /// Creates a copy of the task with updated properties
   TaskModel copyWith({
     int? id,
     String? title,
