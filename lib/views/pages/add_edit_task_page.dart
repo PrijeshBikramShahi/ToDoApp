@@ -4,8 +4,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../controllers/task_controller.dart';
 import '../../models/task_model.dart';
 
-/// Page for adding new tasks or editing existing ones
-/// Determines mode based on whether a task is passed as argument
 class AddEditTaskPage extends StatefulWidget {
   const AddEditTaskPage({Key? key}) : super(key: key);
 
@@ -27,7 +25,6 @@ class _AddEditTaskPageState extends State<AddEditTaskPage> {
     super.initState();
     _taskController = Get.find<TaskController>();
     
-    // Check if we're editing an existing task
     final task = Get.arguments as TaskModel?;
     if (task != null) {
       _editingTask = task;
@@ -50,7 +47,6 @@ class _AddEditTaskPageState extends State<AddEditTaskPage> {
       appBar: AppBar(
         title: Text(_isEditing ? 'Edit Task' : 'Add New Task'),
         actions: [
-          // Save button in app bar
           Obx(() => _taskController.isLoading
               ? const Padding(
                   padding: EdgeInsets.all(16),
@@ -78,7 +74,6 @@ class _AddEditTaskPageState extends State<AddEditTaskPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Task title input
               TextFormField(
                 controller: _titleController,
                 decoration: const InputDecoration(
@@ -100,8 +95,7 @@ class _AddEditTaskPageState extends State<AddEditTaskPage> {
               ),
               
               const SizedBox(height: 16),
-              
-              // Task description input
+
               TextFormField(
                 controller: _descriptionController,
                 decoration: const InputDecoration(
@@ -116,7 +110,6 @@ class _AddEditTaskPageState extends State<AddEditTaskPage> {
               
               const SizedBox(height: 24),
               
-              // Task status (only show when editing)
               if (_isEditing && _editingTask != null)
                 Card(
                   child: Padding(
@@ -161,7 +154,6 @@ class _AddEditTaskPageState extends State<AddEditTaskPage> {
               
               const Spacer(),
               
-              // Save button
               Obx(() => ElevatedButton(
                 onPressed: _taskController.isLoading ? null : _saveTask,
                 style: ElevatedButton.styleFrom(
@@ -194,7 +186,6 @@ class _AddEditTaskPageState extends State<AddEditTaskPage> {
     );
   }
 
-  /// Saves the task (create or update based on mode)
   Future<void> _saveTask() async {
     if (!_formKey.currentState!.validate()) {
       return;
@@ -206,14 +197,12 @@ class _AddEditTaskPageState extends State<AddEditTaskPage> {
     bool success;
     
     if (_isEditing && _editingTask != null) {
-      // Update existing task
       final updatedTask = _editingTask!.copyWith(
         title: title,
         description: description.isEmpty ? null : description,
       );
       success = await _taskController.updateTask(updatedTask);
     } else {
-      // Create new task
       success = await _taskController.createTask(
         title: title,
         description: description.isEmpty ? null : description,
