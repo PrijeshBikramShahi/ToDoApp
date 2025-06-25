@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Application theme configuration
-/// Provides consistent styling across the app
 class AppTheme {
   // Primary colors
   static const Color primaryColor = Color(0xFF2196F3);
