@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../models/task_model.dart';
 
-/// Widget for displaying individual task items
-/// Provides interactive elements for task management
 class TaskCard extends StatelessWidget {
   final TaskModel task;
   final VoidCallback? onTap;
@@ -33,10 +31,8 @@ class TaskCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Task header with title and completion status
               Row(
                 children: [
-                  // Completion checkbox
                   GestureDetector(
                     onTap: onToggle,
                     child: Container(
@@ -62,7 +58,6 @@ class TaskCard extends StatelessWidget {
                   
                   const SizedBox(width: 12),
                   
-                  // Task title
                   Expanded(
                     child: Text(
                       task.title,
@@ -80,7 +75,6 @@ class TaskCard extends StatelessWidget {
                     ),
                   ),
                   
-                  // Delete button
                   IconButton(
                     icon: const Icon(Icons.delete_outline),
                     onPressed: onDelete,
@@ -90,7 +84,6 @@ class TaskCard extends StatelessWidget {
                 ],
               ),
               
-              // Task description (if available)
               if (task.description != null && task.description!.isNotEmpty) ...[
                 const SizedBox(height: 8),
                 Padding(
@@ -109,7 +102,6 @@ class TaskCard extends StatelessWidget {
                 ),
               ],
               
-              // Task metadata
               const SizedBox(height: 12),
               Padding(
                 padding: const EdgeInsets.only(left: 36),
@@ -131,7 +123,6 @@ class TaskCard extends StatelessWidget {
                     
                     const Spacer(),
                     
-                    // Task status badge
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8,
@@ -165,7 +156,6 @@ class TaskCard extends StatelessWidget {
     );
   }
 
-  /// Formats the date for display
   String _formatDate(DateTime date) {
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);

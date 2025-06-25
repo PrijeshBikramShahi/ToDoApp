@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/routes/app_routes.dart';
 
-/// Widget displayed when there are no tasks to show
-/// Provides user guidance and quick action to add first task
 class EmptyStateWidget extends StatelessWidget {
   const EmptyStateWidget({Key? key}) : super(key: key);
 
@@ -34,7 +32,6 @@ class EmptyStateWidget extends StatelessWidget {
             
             const SizedBox(height: 24),
             
-            // Title
             Text(
               'No Tasks Yet',
               style: theme.textTheme.headlineSmall?.copyWith(
@@ -45,7 +42,6 @@ class EmptyStateWidget extends StatelessWidget {
             
             const SizedBox(height: 8),
             
-            // Description
             Text(
               'Start organizing your day by creating your first task!',
               style: theme.textTheme.bodyMedium?.copyWith(
