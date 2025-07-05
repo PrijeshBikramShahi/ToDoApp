@@ -60,8 +60,8 @@ lib/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/flutter-todo-app.git
-   cd flutter-todo-app
+   git clone https://github.com/PrijeshBikramShahi/ToDoApp.git
+   cd ToDoApp
    ```
 
 2. **Install dependencies**
