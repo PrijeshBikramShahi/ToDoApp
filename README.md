@@ -152,9 +152,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-Your Name - [@yourusername](https://twitter.com/yourusername) - your.email@example.com
+[@PrijeshBikramShahi](https://linkedin.com/in/prizzes-bs/) - prijeshshahi0@google.com
 
-Project Link: [https://github.com/yourusername/flutter-todo-app](https://github.com/yourusername/flutter-todo-app)
+Project Link: [https://github.com/PrijeshBikramShahi/ToDoApp](https://github.com/PrijeshBikramShahi/ToDoApp)
 
 ---
 
